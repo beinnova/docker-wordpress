@@ -42,7 +42,8 @@ s/password_here/$WORDPRESS_PASSWORD/
 /'LOGGED_IN_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
 s/wp_/wp_$WORDPRESS_DB/
 /'NONCE_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/" /var/www/wp-config-sample.php > /var/www/wp-config.php
-
+echo "define('WP_SITEURL', 'http://localhost:8080');" >> /var/www/wp-config.php
+echo "define('WP_HOME', 'http://localhost:8080');" >> /var/www/wp-config.php
 mv /etc/php5/apache2/php.ini /etc/php5/apache2/php.ini.orig
 sed "s/upload_max_filesize = 2M/upload_max_filesize = 20M/" /etc/php5/apache2/php.ini.orig > /etc/php5/apache2/php.ini
 
